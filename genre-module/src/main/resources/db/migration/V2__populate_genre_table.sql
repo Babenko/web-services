@@ -1,0 +1,1 @@
+insert into GENRE (movieId, name, description) values (1, 'Action', 'some description about action');
