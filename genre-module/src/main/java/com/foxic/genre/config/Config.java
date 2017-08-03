@@ -27,7 +27,7 @@ public class Config extends WsConfigurerAdapter {
       return new ServletRegistrationBean(servlet, "/ws/*");
     }
 
-    @Bean(name = "countries")
+    @Bean(name = "genres")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema countriesSchema) {
       DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
       wsdl11Definition.setPortTypeName("CountriesPort");

@@ -12,7 +12,7 @@
   <xs:element name="getGenreResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="genre" type="tns:genre"/>
+        <xs:element maxOccurs="unbounded" name="genre" type="tns:genre"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
