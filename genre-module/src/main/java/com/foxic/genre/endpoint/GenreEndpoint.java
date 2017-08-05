@@ -16,18 +16,18 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 public class GenreEndpoint {
   private static final String NAMESPACE_URI = "http://temp.uri/genre";
 
-  private GenreRepository countryRepository;
+  private GenreRepository genreRepository;
 
   @Autowired
-  public GenreEndpoint(GenreRepository countryRepository) {
-    this.countryRepository = countryRepository;
+  public GenreEndpoint(GenreRepository genreRepository) {
+    this.genreRepository = genreRepository;
   }
 
-  @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getCountryRequest")
+  @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getGenreRequest")
   @ResponsePayload
   public GetGenreResponse getCountry(@RequestPayload GetGenreRequest request) {
     GetGenreResponse response = new GetGenreResponse();
-    response.getGenre().addAll(countryRepository.findAll());
+    response.getGenre().addAll(genreRepository.findAll());
     return response;
   }
 }
