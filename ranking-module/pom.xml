@@ -8,5 +8,11 @@
     <artifactId>ranking-module</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-spring-boot-starter-jaxws</artifactId>
+            <version>3.1.7</version>
+        </dependency>
+    </dependencies>
 </project>
