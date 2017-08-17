@@ -8,6 +8,12 @@
     <artifactId>ranking-module</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <parent>
+        <groupId>com.foxic</groupId>
+        <artifactId>web-services</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.cxf</groupId>
