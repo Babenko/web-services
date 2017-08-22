@@ -1,6 +1,7 @@
 package com.foxic.ranking.config;
 
 import com.foxic.ranking.endpoint.RankingEndpointImpl;
+import com.foxic.ranking.repository.RankingRepository;
 import javax.xml.ws.Endpoint;
 import org.apache.cxf.Bus;
 import org.apache.cxf.jaxws.EndpointImpl;
@@ -17,9 +18,12 @@ public class WebConfig {
   @Autowired
   private Bus bus;
 
+  @Autowired
+  private RankingRepository rankingRepository;
+
   @Bean
   public Endpoint endpoint() {
-    Endpoint endpoint = new EndpointImpl(bus, new RankingEndpointImpl(rankingRepositorys));
+    Endpoint endpoint = new EndpointImpl(bus, new RankingEndpointImpl(rankingRepository));
     endpoint.publish("/rank");
     return endpoint;
   }
