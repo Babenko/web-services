@@ -4,8 +4,13 @@ import com.foxic.ranking.dto.Rank;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 //import org.springframework.jdbc.core.JdbcTemplate;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.springframework.stereotype.Repository;
 
 /**
