@@ -6,6 +6,7 @@ import javax.sql.DataSource;
 import javax.xml.ws.Endpoint;
 import org.apache.cxf.Bus;
 import org.apache.cxf.jaxws.EndpointImpl;
+import org.h2.jdbcx.JdbcDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,7 +30,12 @@ public class WebConfig {
     return endpoint;
   }
 
+  @Bean
   public DataSource dataSource() {
-    return null;
+    JdbcDataSource jdbcDataSource = new JdbcDataSource();
+    jdbcDataSource.setUrl("jdbc:h2:mem:rankdb");
+    jdbcDataSource.setUser("sa");
+    jdbcDataSource.setPassword("");
+    return jdbcDataSource;
   }
 }

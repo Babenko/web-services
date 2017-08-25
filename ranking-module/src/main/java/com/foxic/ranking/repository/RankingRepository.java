@@ -1,16 +1,15 @@
 package com.foxic.ranking.repository;
 
 import com.foxic.ranking.dto.Rank;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 //import org.springframework.jdbc.core.JdbcTemplate;
-import java.util.UUID;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import javax.sql.DataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -19,14 +18,23 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class RankingRepository {
 
-//  private JdbcTemplate jdbcTemplate;
-//
-//  public RankingRepository(JdbcTemplate jdbcTemplate) {
-//    this.jdbcTemplate = jdbcTemplate;
-//  }
+  private DataSource dataSource;
+
+  @Autowired
+  public RankingRepository(DataSource dataSource) {
+    this.dataSource = dataSource;
+  }
 
   public List<Rank> loadAll() throws Exception {
-    return new ArrayList<>();//jdbcTemplate.query("SELECT * FROM ranking", (row, index) -> populateRank(row));
+    List<Rank> list = new ArrayList<>();
+    try (Connection conn = dataSource.getConnection();
+          Statement statement = conn.createStatement()) {
+      ResultSet rs = statement.executeQuery("SELECT * FROM ranking");
+      while(rs.next()) {
+        list.add(populateRank(rs));
+      }
+    }
+    return list;
   }
 
   private Rank populateRank(ResultSet row) throws SQLException {
