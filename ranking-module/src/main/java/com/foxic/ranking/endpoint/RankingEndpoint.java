@@ -11,7 +11,7 @@ import javax.xml.ws.ResponseWrapper;
 /**
  * Created by Sem Babenko.
  */
-@WebService(targetNamespace = "http://service.ws.sample/", name = "Rank")
+@WebService(targetNamespace = "http://url.temp/", name = "Rank")
 public interface RankingEndpoint {
 
   @WebResult(name = "Rank", targetNamespace = "")
@@ -20,7 +20,7 @@ public interface RankingEndpoint {
       className = "com.demo.cxf.service.SayHello")
   @WebMethod(action = "urn:SayHello")
   @ResponseWrapper(localName = "sayHelloResponse",
-      targetNamespace = "http://service.ws.sample/",
+      targetNamespace = "http://url.temp/",
       className = "com.demo.cxf.service.SayHelloResponse")
   List<Rank> loadAll();
 }
